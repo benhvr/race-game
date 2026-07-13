@@ -44,10 +44,9 @@ async def gerer_client(websocket):
 async def main():
     # Lance la boucle de jeu en parallèle du serveur WebSocket
     port = int(os.environ.get("PORT", 8765))
-    asyncio.create_task(boucle_jeu())
 
     async with websockets.serve(gerer_client, "0.0.0.0", port):
         print(f"Serveur démarré sur {port}")
-        await asyncio.Future()  # tourne indéfiniment
+        await boucle_jeux()  # tourne indéfiniment
 
 asyncio.run(main())

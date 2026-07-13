@@ -1,3 +1,5 @@
+import os
+
 import asyncio
 import json
 import websockets
@@ -41,6 +43,7 @@ async def gerer_client(websocket):
 
 async def main():
     # Lance la boucle de jeu en parallèle du serveur WebSocket
+    port = int(os.environ.get("PORT", 8765))
     asyncio.create_task(boucle_jeu())
 
     async with websockets.serve(gerer_client, "0.0.0.0", 8765):

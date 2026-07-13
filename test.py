@@ -3,7 +3,7 @@ import asyncio
 import websockets
 
 async def test():
-    async with websockets.connect("ws://localhost:8765") as ws:
+    async with websockets.connect("wss://web-production-6da9.up.railway.app") as ws:
         # Envoie "avancer" pendant 2 secondes
         await ws.send('{"z": true, "s": false, "q": false, "d": false}')
         for _ in range(5):
